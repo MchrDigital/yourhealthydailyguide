@@ -2387,9 +2387,7 @@
                 class="atomicat-text-8735969 atomicat-heading-title-8735969 atomicat-element-container-8735969 a-e-cont atomicat-heading-title a-r"
               >
                 <h1>
-                  <span style="color: #ffeb00">Attention:</span> This
-                  presentation will be available only until
-                  <span class="atomicat-hoje">15/10/2025</span>
+                  <span style="color: #ffeb00">Attention:</span> This presentation will be available only until <span class="atomicat-hoje">15/10/2025</span>
                 </h1>
               </div>
             </div>
@@ -2440,9 +2438,28 @@
                   </script>
                   <script>
                     (function () {
-                      var delaySeconds = 1770;
+                      var delaySeconds = 10;
                       var player = document.querySelector("vturb-smartplayer");
                       if (!player) return;
+                      function forceLoadImages(root) {
+                        (root || document).querySelectorAll("img").forEach(function (img) {
+                          try {
+                            if (img.getAttribute("loading") === "lazy") {
+                              img.setAttribute("loading", "eager");
+                            }
+                            if (img.dataset && img.dataset.src) {
+                              img.src = img.dataset.src;
+                            } else {
+                              img.src = img.src; // re-assign to nudge reload when needed
+                            }
+                            if (img.dataset && img.dataset.srcset) {
+                              img.srcset = img.dataset.srcset;
+                            } else if (img.srcset) {
+                              var s = img.srcset; img.srcset = ""; img.srcset = s;
+                            }
+                          } catch (_) {}
+                        });
+                      }
                       player.addEventListener("player:ready", function () {
                         try {
                           player.displayHiddenElements(
@@ -2450,6 +2467,12 @@
                             [".atomicat-delay"],
                             { persist: true }
                           );
+                          // após revelar, garanta o carregamento das imagens
+                          setTimeout(function(){
+                            document.querySelectorAll(".atomicat-delay").forEach(function(el){
+                              forceLoadImages(el);
+                            });
+                          }, (delaySeconds * 1000) + 50);
                         } catch (e) {
                           setTimeout(function () {
                             document
@@ -2457,6 +2480,7 @@
                               .forEach(function (el) {
                                 el.style.display = "";
                               });
+                            forceLoadImages(document);
                           }, delaySeconds * 1000);
                         }
                       });
