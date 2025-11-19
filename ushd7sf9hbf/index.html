@@ -2152,24 +2152,10 @@
          }
       }
 
-      let delayApplied = false;
-
-      document.addEventListener("player:play", function (event) {
-         if (delayApplied) return;
-         delayApplied = true;
-
-      const SECONDS_TO_DISPLAY = 10;
-      const elements = document.querySelectorAll(".esconder");
-
-   // sempre começa oculto
-      elements.forEach(el => el.style.display = "none");
-
-   // libera quando o tempo do vídeo passar
-      setTimeout(() => {
-      elements.forEach(el => el.style.display = "");
-      if (typeof pitchVSL === "function") pitchVSL();
-      }, SECONDS_TO_DISPLAY * 1000);
-      });
+   document.addEventListener("player:display", function () {
+   // Isso garante que o delay foi atingido pelo Vturb
+   pitchVSL();
+   });
    </script>
 
 
