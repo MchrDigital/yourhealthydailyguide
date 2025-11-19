@@ -2141,68 +2141,15 @@
       }
    </script>
    <script>
-(function () {
-
-    // Controle interno para evitar execução duplicada
-    let delayApplied = false;
-    const SECONDS_TO_DISPLAY = 10;
-
-    // Aguarda até o player realmente existir e estar inicializado
-    function iniciarDelayQuandoPlayerEstiverPronto() {
-
-        const smart = document.querySelector("vturb-smartplayer");
-        if (!smart) return setTimeout(iniciarDelayQuandoPlayerEstiverPronto, 200);
-
-        const player = smart.player;
-        if (!player) return setTimeout(iniciarDelayQuandoPlayerEstiverPronto, 200);
-
-        if (delayApplied) return;
-        delayApplied = true;
-
-        // Garante que .esconder começa totalmente oculta
-        const elements = document.querySelectorAll('.esconder');
-        elements.forEach(el => el.style.display = "none");
-
-        // Delay REAL do player (VSL)
-        try {
-            player.displayHiddenElements(
-                SECONDS_TO_DISPLAY,
-                ['.esconder'],
-                { persist: true }
-            );
-
-            // Observa quando o elemento deixar de estar hidden
-            const observer = new MutationObserver((mutations) => {
-                mutations.forEach(m => {
-                    if (m.attributeName === "style") {
-                        const el = m.target;
-                        if (window.getComputedStyle(el).display !== "none") {
-                            pitchVSL();
-                            observer.disconnect();
-                        }
-                    }
-                });
-            });
-
-            elements.forEach(el => observer.observe(el, { attributes: true }));
-
-        } catch (e) {
-            // Caso o displayHiddenElements dê erro (fallback)
-            setTimeout(function () {
-                elements.forEach(el => {
-                    el.style.display = "";
-                });
-                pitchVSL();
-            }, SECONDS_TO_DISPLAY * 1000);
-        }
-    }
-
-    iniciarDelayQuandoPlayerEstiverPronto();
-
-})();
-</script>
-
-
+   <script>
+  var delaySeconds = 10;
+  var player = document.querySelector("vturb-smartplayer");
+  player.addEventListener("player:ready", function() {
+    player.displayHiddenElements(delaySeconds, [".esconder"], {
+      persist: true
+    });
+     });
+   </script>
 
 
 </body></html>
