@@ -2141,23 +2141,42 @@
       }
    </script>
    <script>
-   function pitchVSL() {
-      document.querySelector('.quiz-container').style.display = "block"
-      document.querySelector('.quiz-container').classList.remove('esconder')
-      document.querySelector('#fb-comments').style.display = "none";
-      
-      const quizSectionDelay = document.querySelector('.quiz-container');
-      if (quizSectionDelay) {
-         const top = quizSectionDelay.offsetTop;
-         window.scrollTo({ top, behavior: 'smooth' });
-      }
-   }
+let delayApplied = false;
 
-   document.addEventListener("player:display", function () {
-   // Isso garante que o delay foi atingido pelo Vturb
-      pitchVSL();
-   });
-   </script>
+document.addEventListener("player:ready", function (event) {
+    if (delayApplied) return;
+    delayApplied = true;
+
+    const player = event.detail.player;  // <-- player REAL do Vturb
+    const SECONDS_TO_DISPLAY = 10;       // <-- delay baseado no VSL
+
+    // Garante que as partes escondidas começam ocultas
+    document.querySelectorAll('.esconder').forEach(el => {
+       el.style.display = "none";
+    });
+
+    // AQUI é o delay REAL no VÍDEO
+    player.displayHiddenElements(SECONDS_TO_DISPLAY, ['.esconder'], { persist: true });
+
+    // Quando o player liberar os elementos, acionamos seu quiz
+    const observer = new MutationObserver((mutations) => {
+       mutations.forEach(m => {
+         if (m.attributeName === "style") {
+            const el = m.target;
+            if (window.getComputedStyle(el).display !== "none") {
+               pitchVSL();
+               observer.disconnect();
+            }
+         }
+       });
+    });
+
+    document.querySelectorAll('.esconder').forEach(el => {
+       observer.observe(el, { attributes: true });
+    });
+});
+</script>
+
 
 
 
