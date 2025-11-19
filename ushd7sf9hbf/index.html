@@ -2141,14 +2141,29 @@
       }
    </script>
    <script>
-  var delaySeconds = 10;
-  var player = document.querySelector("vturb-smartplayer");
-  player.addEventListener("player:ready", function() {
-    player.displayHiddenElements(delaySeconds, [".esconder"], {
-      persist: true
-    });
-     });
-   </script>
+(function() {
+
+    const delaySeconds = 10;
+    let listenerAttached = false;
+
+    function esperarPlayer() {
+        const player = document.querySelector("vturb-smartplayer");
+        if (!player) {
+            return setTimeout(esperarPlayer, 200);
+        }
+
+        if (listenerAttached) return;
+        listenerAttached = true;
+
+        player.addEventListener("player:ready", function () {
+            player.displayHiddenElements(delaySeconds, ['.esconder'], { persist: true });
+        });
+    }
+
+    esperarPlayer();
+
+})();
+</script>
 
 
 </body></html>
