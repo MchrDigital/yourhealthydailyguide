@@ -2143,41 +2143,48 @@
    <script>
 let delayApplied = false;
 
-document.addEventListener("player:ready", function (event) {
+function iniciarDelayQuandoPlayerEstiverPronto() {
+
+    // pega o elemento do player
+    const smart = document.querySelector("vturb-smartplayer");
+    if (!smart) return setTimeout(iniciarDelayQuandoPlayerEstiverPronto, 200);
+
+    // tenta pegar a API interna do player
+    const player = smart.player;
+    if (!player) return setTimeout(iniciarDelayQuandoPlayerEstiverPronto, 200);
+
+    // se já aplicamos o delay, não repete
     if (delayApplied) return;
     delayApplied = true;
 
-    const player = event.detail.player;  // <-- player REAL do Vturb
-    const SECONDS_TO_DISPLAY = 10;       // <-- delay baseado no VSL
+    const SECONDS_TO_DISPLAY = 10;
 
-    // Garante que as partes escondidas começam ocultas
-    document.querySelectorAll('.esconder').forEach(el => {
-       el.style.display = "none";
-    });
+    // garante que os elementos com .esconder iniciem ocultos
+    const elements = document.querySelectorAll('.esconder');
+    elements.forEach(el => el.style.display = "none");
 
-    // AQUI é o delay REAL no VÍDEO
+    // AQUI vem o delay REAL do vídeo
     player.displayHiddenElements(SECONDS_TO_DISPLAY, ['.esconder'], { persist: true });
 
-    // Quando o player liberar os elementos, acionamos seu quiz
+    // Quando o elemento aparecer, executa o pitch
     const observer = new MutationObserver((mutations) => {
-       mutations.forEach(m => {
-         if (m.attributeName === "style") {
-            const el = m.target;
-            if (window.getComputedStyle(el).display !== "none") {
-               pitchVSL();
-               observer.disconnect();
+        mutations.forEach(m => {
+            if (m.attributeName === "style") {
+                const el = m.target;
+                if (window.getComputedStyle(el).display !== "none") {
+                    pitchVSL();
+                    observer.disconnect();
+                }
             }
-         }
-       });
+        });
     });
 
-    document.querySelectorAll('.esconder').forEach(el => {
-       observer.observe(el, { attributes: true });
-    });
-});
+    elements.forEach(el => observer.observe(el, { attributes: true }));
+}
+
+// chama a função continuamente até o player existir
+iniciarDelayQuandoPlayerEstiverPronto();
 </script>
-
-
 
 
 
