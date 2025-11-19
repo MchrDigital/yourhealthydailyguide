@@ -2152,27 +2152,23 @@
          }
       }
 
-      document.addEventListener("DOMContentLoaded", function () {
-         const SECONDS_TO_DISPLAY = 10;
-      
-         const elements = document.querySelectorAll(".esconder");
-      
-         // garante que começam ocultos
-         elements.forEach(el => {
-            el.style.display = "none";
-         });
-      
-         // mostra depois do delay
-         setTimeout(() => {
-            elements.forEach(el => {
-               el.style.display = "";
-            });
-      
-            // chama função quando aparecer, se você quiser
-            if (typeof pitchVSL === "function") {
-               pitchVSL();
-            }
-         }, SECONDS_TO_DISPLAY * 1000);
+      let delayApplied = false;
+
+      document.addEventListener("player:play", function (event) {
+         if (delayApplied) return;
+         delayApplied = true;
+
+      const SECONDS_TO_DISPLAY = 10;
+      const elements = document.querySelectorAll(".esconder");
+
+   // sempre começa oculto
+      elements.forEach(el => el.style.display = "none");
+
+   // libera quando o tempo do vídeo passar
+      setTimeout(() => {
+      elements.forEach(el => el.style.display = "");
+      if (typeof pitchVSL === "function") pitchVSL();
+      }, SECONDS_TO_DISPLAY * 1000);
       });
    </script>
 
