@@ -2141,20 +2141,21 @@
       }
    </script>
    <script>
-      function pitchVSL() {
-         document.querySelector('.quiz-container').style.display = "block"
-         document.querySelector('.quiz-container').classList.remove('esconder')
-         document.querySelector('#fb-comments').style.display = "none"
-         const quizSectionDelay = document.querySelector('.quiz-container');
-         if (quizSectionDelay) {
-            const top = quizSectionDelay.offsetTop;
-            window.scrollTo({ top, behavior: 'smooth' });
-         }
+   function pitchVSL() {
+      document.querySelector('.quiz-container').style.display = "block"
+      document.querySelector('.quiz-container').classList.remove('esconder')
+      document.querySelector('#fb-comments').style.display = "none";
+      
+      const quizSectionDelay = document.querySelector('.quiz-container');
+      if (quizSectionDelay) {
+         const top = quizSectionDelay.offsetTop;
+         window.scrollTo({ top, behavior: 'smooth' });
       }
+   }
 
    document.addEventListener("player:display", function () {
    // Isso garante que o delay foi atingido pelo Vturb
-   pitchVSL();
+      pitchVSL();
    });
    </script>
 
