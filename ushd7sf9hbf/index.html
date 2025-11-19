@@ -2152,50 +2152,28 @@
          }
       }
 
-      var alreadyInitialized = false;
+      document.addEventListener("DOMContentLoaded", function () {
+         const SECONDS_TO_DISPLAY = 10;
 
-      document.addEventListener('player:ready', function (event) {
-         if (alreadyInitialized) return;
+         const elements = document.querySelectorAll(".esconder");
 
-         var detail = event.detail || {};
-         var config = detail.config || {};
-         var player = detail.player || document.querySelector('vturb-smartplayer');
-         var playerId = config.id;
-         var SECONDS_TO_DISPLAY = 10;
+         // garante que começam ocultos
+         elements.forEach(el => {
+            el.style.display = "none";
+         });
 
-         if (!playerId) return;
+         // mostra depois do delay
+         setTimeout(() => {
+            elements.forEach(el => {
+               el.style.display = "";
+            });
 
-         alreadyInitialized = true;
-
-         player.displayHiddenElements(SECONDS_TO_DISPLAY, ['.esconder'], { persist: true });
+         // chama função quando aparecer, se você quiser
+         if (typeof pitchVSL === "function") {
+            pitchVSL();
+         }
+         }, SECONDS_TO_DISPLAY * 1000);
       });
-
-      function setupObserver() {
-         const esconderElements = document.querySelectorAll('.esconder');
-
-         if (esconderElements.length === 0) return;
-         const observer = new MutationObserver((mutations) => {
-            mutations.forEach((mutation) => {
-               if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
-                  const element = mutation.target;
-                  const computedStyle = window.getComputedStyle(element);
-                  if (computedStyle.display !== 'none') {
-
-                     pitchVSL()
-
-                  }
-               }
-            });
-         });
-
-         esconderElements.forEach((element) => {
-            observer.observe(element, {
-               attributes: true,
-               attributeFilter: ['style']
-            });
-         });
-      }
-      setupObserver()
    </script>
 
 
