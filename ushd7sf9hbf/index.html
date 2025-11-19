@@ -2141,50 +2141,67 @@
       }
    </script>
    <script>
-let delayApplied = false;
+(function () {
 
-function iniciarDelayQuandoPlayerEstiverPronto() {
-
-    // pega o elemento do player
-    const smart = document.querySelector("vturb-smartplayer");
-    if (!smart) return setTimeout(iniciarDelayQuandoPlayerEstiverPronto, 200);
-
-    // tenta pegar a API interna do player
-    const player = smart.player;
-    if (!player) return setTimeout(iniciarDelayQuandoPlayerEstiverPronto, 200);
-
-    // se já aplicamos o delay, não repete
-    if (delayApplied) return;
-    delayApplied = true;
-
+    // Controle interno para evitar execução duplicada
+    let delayApplied = false;
     const SECONDS_TO_DISPLAY = 10;
 
-    // garante que os elementos com .esconder iniciem ocultos
-    const elements = document.querySelectorAll('.esconder');
-    elements.forEach(el => el.style.display = "none");
+    // Aguarda até o player realmente existir e estar inicializado
+    function iniciarDelayQuandoPlayerEstiverPronto() {
 
-    // AQUI vem o delay REAL do vídeo
-    player.displayHiddenElements(SECONDS_TO_DISPLAY, ['.esconder'], { persist: true });
+        const smart = document.querySelector("vturb-smartplayer");
+        if (!smart) return setTimeout(iniciarDelayQuandoPlayerEstiverPronto, 200);
 
-    // Quando o elemento aparecer, executa o pitch
-    const observer = new MutationObserver((mutations) => {
-        mutations.forEach(m => {
-            if (m.attributeName === "style") {
-                const el = m.target;
-                if (window.getComputedStyle(el).display !== "none") {
-                    pitchVSL();
-                    observer.disconnect();
-                }
-            }
-        });
-    });
+        const player = smart.player;
+        if (!player) return setTimeout(iniciarDelayQuandoPlayerEstiverPronto, 200);
 
-    elements.forEach(el => observer.observe(el, { attributes: true }));
-}
+        if (delayApplied) return;
+        delayApplied = true;
 
-// chama a função continuamente até o player existir
-iniciarDelayQuandoPlayerEstiverPronto();
+        // Garante que .esconder começa totalmente oculta
+        const elements = document.querySelectorAll('.esconder');
+        elements.forEach(el => el.style.display = "none");
+
+        // Delay REAL do player (VSL)
+        try {
+            player.displayHiddenElements(
+                SECONDS_TO_DISPLAY,
+                ['.esconder'],
+                { persist: true }
+            );
+
+            // Observa quando o elemento deixar de estar hidden
+            const observer = new MutationObserver((mutations) => {
+                mutations.forEach(m => {
+                    if (m.attributeName === "style") {
+                        const el = m.target;
+                        if (window.getComputedStyle(el).display !== "none") {
+                            pitchVSL();
+                            observer.disconnect();
+                        }
+                    }
+                });
+            });
+
+            elements.forEach(el => observer.observe(el, { attributes: true }));
+
+        } catch (e) {
+            // Caso o displayHiddenElements dê erro (fallback)
+            setTimeout(function () {
+                elements.forEach(el => {
+                    el.style.display = "";
+                });
+                pitchVSL();
+            }, SECONDS_TO_DISPLAY * 1000);
+        }
+    }
+
+    iniciarDelayQuandoPlayerEstiverPronto();
+
+})();
 </script>
+
 
 
 
