@@ -805,7 +805,7 @@
                                  <div class="item-sides">
                                     <div class="item-img">
                                        <div class="supply"><b>1+1 JARS</b></div>
-                                       <img src="images/2-burnrightright.png" alt="1 Jar">
+                                       <img src="images/2-Burn.png" alt="1 Jar">
                                     </div>
                                     <div class="item-right">
                                        <div class="item-info">
@@ -998,7 +998,7 @@
                         <div class="col-lg-8 mx-auto">
                            <div class="ebook px-md-4 pb-md-4">
                               <div class="img-mockup">
-                                 <img src="images/2-burnright.png">
+                                 <img src="images/2-Burn.png">
                               </div>
                               <h3>Your Personalized <b class="fs-2" style="color: var(--secondary-color); text-shadow: -1px -1px 0 #ffffffcc, 2px 2px 0 #6c0048;">Burn Boost
                                     Formula</b></h3>
@@ -1355,7 +1355,7 @@
                                  <div class="item-sides">
                                     <div class="item-img">
                                        <div class="supply"><b>1+1 JARS</b></div>
-                                       <img src="images/2-burnright.png" alt="1 Jar">
+                                       <img src="images/2-Burn.png" alt="1 Jar">
                                     </div>
                                     <div class="item-right">
                                        <div class="item-info">
@@ -1704,7 +1704,7 @@
                                  <div class="item-sides">
                                     <div class="item-img">
                                        <div class="supply"><b>1+1 JARS</b></div>
-                                       <img src="images/2-burnright.png" alt="1 Jar">
+                                       <img src="images/2-Burn.png" alt="1 Jar">
                                     </div>
                                     <div class="item-right">
                                        <div class="item-info">
@@ -2071,7 +2071,7 @@
       <div id="purchase-notifications" class="purchases-disclaimer">
          <div class="purchases-box">
             <div class="purchased-bottle">
-               <img id="two-bottles" src="images/2-burnright.png" style="display: none;">
+               <img id="two-bottles" src="images/2-Burn.png" style="display: none;">
                <img id="three-bottles" src="images/3-Burn.png" style="display: none;">
                <img id="six-bottles" src="images/6-Burn.png" style="display: none;">
             </div>
@@ -2156,18 +2156,6 @@
 
       var alreadyInitialized = false;
 
-      var updateLinksWithUTM = function (utmParam) {
-         var links = document.querySelectorAll('a[href]:not([href*="#"])');
-         var separator = '?';
-         var queryString = separator + utmParam;
-         for (var i = 0; i < links.length; i++) {
-            var link = links[i];
-            if (link.href.indexOf(utmParam) !== -1) continue;
-            var baseUrl = link.href.split('?')[0];
-            link.href = baseUrl + queryString;
-         }
-      };
-
       document.addEventListener('player:ready', function (event) {
          if (alreadyInitialized) return;
 
@@ -2184,7 +2172,6 @@
          alreadyInitialized = true;
 
          player.displayHiddenElements(SECONDS_TO_DISPLAY, ['.esconder'], { persist: true });
-         updateLinksWithUTM('utm_vid=quizz');
       });
 
       function setupObserver() {
