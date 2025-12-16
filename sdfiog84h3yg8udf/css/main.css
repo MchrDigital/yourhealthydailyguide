@@ -1,0 +1,127 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+footer {
+  background-color: var(--primary-color);
+  text-align: center;
+  padding: 40px 0;
+  background-color: #F9F9F9;
+  padding: 40px 0;
+}
+footer p {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: center;
+  color: #666666;
+}
+footer ul {
+  display: flex;
+  justify-content: space-between;
+  margin: 2rem 0;
+  padding-left: 0;
+}
+@media (max-width: 991px) {
+  footer ul {
+    margin: 1rem 0;
+  }
+}
+@media (max-width: 991px) {
+  footer ul {
+    display: flow;
+  }
+}
+footer ul li {
+  list-style: none;
+}
+footer ul li a {
+  display: inline-block;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: center;
+  color: #666666;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+:root {
+  --primary-color: #7ad3f7; 
+  --secondary-color: #1A3D59; 
+  --third-color: #102430; 
+  --fourth-color: #A0E8F9; 
+  --primary-color-light: rgb(186, 233, 250);
+  --primary-color-dark: #3a97b5; 
+  --secondary-color-light: rgb(90, 144, 177); 
+  --secondary-color-dark: rgb(26, 61, 89); 
+  --contrast-color: #fff490; 
+  --text-color: #000000;
+  --light-color: #F1F1F1;
+  --gray: #666666;
+  --gray-secondary: #767676;
+  --light: #1B2A38;
+  --red: #D03438;
+  --black: #231F20;
+  --white: #FFFFFF;
+  --blue: #1A3D59; 
+}
+
+* {
+  font-family: "Inter";
+}
+
+body {
+  animation: fadeInPage 500ms forwards;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Roboto";
+}
+
+img {
+  max-width: 100%;
+}
+
+header {
+  background-color: var(--light);
+  padding-top: 19px;
+  padding-bottom: 49px;
+}
+header img {
+  max-width: 200px;
+  margin: 0 auto;
+  display: flex;
+}
+@media (max-width: 991px) {
+  header img {
+    max-width: 130px;
+  }
+}
+
+.cartpanda.banner-hidden .cpd-default {
+  display: none !important;
+}
+
+.cartpanda#vsl .cpd-default {
+	display: none !important;
+}
+
+@keyframes fadeInPage {
+	0% {
+		opacity: 0;
+	} 100% {
+		opacity: 1;
+	}
+}
+
+/*# sourceMappingURL=styles.css.map */
+
+

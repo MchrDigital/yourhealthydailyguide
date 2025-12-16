@@ -1,0 +1,1425 @@
+/* Reset and base styles */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* Custom properties */
+:root {
+  --primary-color: #094288;
+  --hover-color: #52a1bd;
+  --text-color: #ffffff;
+  --gradient-color: linear-gradient(130deg, #faa339 0%, #d67702 100%);
+  --max-width: 900px;
+  --spacing: 1.5rem;
+}
+
+body {
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 98.9vw;
+}
+
+/* --- Estilos do Cabeçalho --- */
+.main-header {
+  width: 100%;
+}
+
+/* --- Barra Superior (Vermelha Escura) --- */
+.top-bar {
+  background-color: #a01010; /* Tom de vermelho escuro principal */
+  padding: 10px 0;
+}
+
+.top-bar .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: center; /* Centraliza o logo por padrão */
+  align-items: center;
+  position: relative; /* Necessário para posicionar o menu hamburger */
+}
+
+.logo {
+  color: #ffffff;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1.8rem; /* Tamanho da fonte do logo */
+  font-weight: 400;
+  letter-spacing: 2px; /* Espaçamento entre as letras */
+  text-transform: uppercase;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Sombra sutil para profundidade */
+  margin: 0;
+}
+
+/* --- Botão Hamburger --- */
+.menu-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 5px; /* Espaço entre as linhas do hamburger */
+  position: absolute; /* Posiciona o menu à direita */
+  right: 20px;
+}
+
+.hamburger-line {
+  width: 30px;
+  height: 3px;
+  background-color: #ffffff;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* --- Ticker de Notícias (Barra de Texto Rolante) --- */
+.news-ticker {
+  background-color: #7b0c0c; /* Tom de vermelho mais fechado */
+  padding: 4px 0;
+  overflow: hidden; /* Essencial! Esconde o texto que sai da tela */
+  white-space: nowrap; /* Impede a quebra de linha do texto */
+}
+
+.ticker-content {
+  display: inline-block; /* Permite que a animação funcione corretamente */
+  /* Animação: nome, duração, tipo, repetição */
+  animation: marquee 40s linear infinite;
+}
+
+.ticker-content p {
+  display: inline-block;
+  color: #f0e6d2; /* Cor de texto levemente amarelada/bege */
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-bottom: 0;
+  font-size: 0.8rem;
+}
+
+/* --- Animação do Ticker (Marquee Effect) --- */
+/* O "porquê" dessa animação:
+   - Ela cria um movimento contínuo que captura o olhar do usuário.
+   - Gera um senso de urgência e de que as informações são "quentes" e atuais.
+   - É uma micro-interação que deixa a página mais viva e profissional.
+*/
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    /* Move o conteúdo para a esquerda em 50% da sua largura total.
+           Como temos duas cópias do texto, isso cria um loop perfeito. */
+    transform: translateX(-50%);
+  }
+}
+
+/* --- Container do Artigo --- */
+.article-container {
+  max-width: 1000px; /* Limita a largura para melhor legibilidade em telas grandes */
+  margin: 0 auto; /* Centraliza o container */
+  padding: 20px;
+}
+
+/* --- Cabeçalho do Artigo --- */
+.article-header {
+  width: 100%;
+  margin-bottom: 30px; /* Espaço após o cabeçalho */
+}
+
+/* --- Informações do Autor e Data --- */
+.meta-info {
+  margin-bottom: 25px;
+}
+
+.author-name {
+  font-weight: 700; /* Negrito */
+  font-size: 16px;
+  color: #212529;
+  margin: 0;
+}
+
+.update-date {
+  font-size: 14px;
+  color: #6c757d; /* Cinza para dar menos destaque */
+  margin: 4px 0 0 0;
+}
+
+/* --- Pré-título (Kicker) --- */
+.pre-headline {
+  text-align: center;
+  font-size: 18px;
+  font-style: italic; /* Itálico para criar um tom de "segredo revelado" */
+  color: #495057;
+  margin-bottom: 15px;
+}
+
+/* --- Título Principal (H1) --- */
+.main-headline {
+  font-family: "Nunito Sans", sans-serif !important;
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.4;
+  color: #212529; /* Cor principal do título */
+}
+
+.highlight-red {
+  /* Essa é a nossa isca visual. O vermelho chama a atenção imediatamente
+     para a parte mais intrigante do título. */
+  color: #d90429; /* Um vermelho forte e impactante */
+}
+
+/* Main container */
+.container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0rem;
+  max-width: var(--max-width);
+  width: 60%;
+  margin: 0;
+}
+
+.conteudo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.viewer-counter {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #000;
+  text-align: center;
+  margin: 20px 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Estilo básico para o cronômetro */
+.countdown {
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  width: 100%;
+  text-align: center;
+  border-radius: 8px;
+  user-select: none;
+}
+
+.divisor {
+  background: var(--gradient-color);
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.divisor h2 {
+  text-align: center;
+  margin: 0 auto;
+  max-width: 250px;
+  color: var(--text-color);
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.divisor h2 span {
+  color: #1a1a1a;
+}
+
+/* --- Seção de Garantia Principal --- */
+.guarantee-section {
+  /* O gradiente roxo é a chave do design. Ajuste os ângulos e cores se necessário. */
+  background: var(--gradient-color);
+  padding: 3rem 0;
+  color: #ffffff;
+  width: 100%;
+}
+
+/* Usamos Flexbox para criar as duas colunas. É moderno, eficiente e responsivo. */
+.guarantee-content {
+  display: flex;
+  align-items: center;
+  gap: 60px; /* Espaço entre o selo dourado e o texto */
+}
+
+/* --- Coluna da Esquerda (Selo Principal) --- */
+.guarantee-seal-main {
+  flex: 1; /* Ocupa 1 parte do espaço */
+  max-width: 280px;
+}
+
+.guarantee-seal-main img {
+  width: 100%;
+  height: auto;
+  /* Um leve brilho para destacar ainda mais o selo */
+  filter: drop-shadow(0 0 100px rgba(35, 229, 255, 0.486));
+}
+
+/* --- Coluna da Direita (Textos) --- */
+.guarantee-text-content {
+  flex: 2; /* Ocupa 2 partes do espaço, ou seja, é maior que a coluna do selo */
+}
+
+.guarantee-headline {
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.guarantee-subheadline {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1a1a1a; /* Um tom de roxo mais claro para contraste sutil */
+  margin-bottom: 24px;
+}
+
+.guarantee-text-content p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(
+    --text-color
+  ); /* Cor do texto de parágrafo, não é branco puro para ser mais suave aos olhos */
+  margin-bottom: 16px;
+}
+
+/* --- Selos Secundários --- */
+.secondary-seals {
+  display: flex;
+  justify-content: flex-start; /* Alinha à esquerda no desktop */
+  align-items: center;
+  gap: 20px; /* Espaço entre os selos */
+  margin-top: 30px;
+  flex-wrap: wrap; /* Permite que os selos quebrem a linha em telas menores */
+}
+
+.secondary-seals img {
+  height: 100px; /* Altura fixa para manter a consistência */
+  width: auto;
+  transition: transform 0.3s ease; /* Efeito suave no hover */
+  background-color: #fff;
+  border-radius: 100%;
+}
+
+.secondary-seals img:hover {
+  transform: scale(1.1); /* Aumenta um pouco o selo ao passar o mouse */
+}
+
+/* --- Responsividade para Tablets e Celulares --- */
+@media (max-width: 768px) {
+  .guarantee-content {
+    flex-direction: column; /* Transforma as colunas em linhas */
+    gap: 40px;
+  }
+
+  .guarantee-seal-main {
+    max-width: 220px; /* Diminui um pouco o selo principal no mobile */
+    margin-bottom: 0;
+  }
+
+  .guarantee-subheadline {
+    font-size: 22px;
+  }
+
+  .secondary-seals {
+    justify-content: center; /* Centraliza os selos secundários */
+    gap: 15px;
+  }
+
+  .secondary-seals img {
+    height: 65px; /* Diminui um pouco os selos */
+  }
+}
+
+/* Testimonials */
+.testimonial-container {
+  border: 2px solid var(--hover-color); /* borda verde */
+  border-radius: 12px;
+  padding: 20px 25px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background-color: #f8fdf8; /* fundo claro */
+  max-width: 700px;
+  margin: 1rem auto;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Foto do usuário */
+.testimonial-container .avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* Conteúdo do depoimento */
+.testimonial-container .testimonial-content {
+  flex: 1;
+  font-size: 1rem;
+  color: #222;
+  line-height: 1.4;
+}
+
+/* Estrelas */
+.testimonial-container .stars {
+  color: #f6b700; /* amarelo ouro */
+  font-size: 1.5rem;
+  margin-bottom: 6px;
+  letter-spacing: 3px;
+}
+
+/* Texto do depoimento - negrito para destaque */
+.testimonial-container .testimonial-content p {
+  margin-bottom: 10px;
+}
+
+.testimonial-container .testimonial-content strong {
+  font-weight: 700;
+}
+
+/* Nome e cidade */
+.testimonial-container .testimonial-content .name {
+  margin-top: 8px;
+}
+
+/* Ícone e texto verified */
+.testimonial-container .verified-purchase {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #222;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+/* Ícone de checkmark (usando emoji) */
+.testimonial-container .verified-purchase .checkmark {
+  font-size: 1.3rem;
+  color: var(--hover-color);
+  line-height: 1;
+}
+
+/* Estilo da seção Real Mounfit Users */
+.real-users {
+  text-align: center;
+  margin: 4rem 2rem;
+}
+
+.real-users img {
+  max-width: var(--max-width);
+}
+
+.real-users h2 {
+  font-weight: 900;
+  font-size: 2rem;
+  color: var(--hover-color); /* azul escuro */
+  margin-bottom: 1rem;
+}
+
+/* Botão Life Changing Results */
+.btn-life-changing {
+  background: var(--gradient-color); /* azul médio */
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 24px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.3s ease;
+}
+
+.offer-section {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  gap: 24px;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 16px;
+  flex-wrap: nowrap;
+}
+
+.offer {
+  background: #fff;
+  border-radius: 12px;
+  border: 2px solid var(--hover-color);
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+  justify-content: space-between;
+}
+
+.good-value {
+  border-color: var(--hover-color);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  width: 340px;
+  z-index: 2;
+}
+
+.offer-header {
+  text-align: center;
+  padding: 12px 16px;
+  color: white;
+  border-radius: 10px 10px 0 0;
+  width: 100%;
+}
+
+.try-one-header {
+  background-color: var(--hover-color);
+}
+
+.good-value-header {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+.most-popular-header {
+  background-color: var(--hover-color);
+}
+
+.offer-header h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.offer-header p {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.offer-image {
+  margin: 20px 0;
+  position: relative;
+  width: 240px;
+  height: 190px;
+}
+
+.offer-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  object-fit: contain;
+}
+
+.offer-price {
+  font-weight: 700;
+  font-size: 4rem;
+  margin-bottom: 6px;
+  color: #000;
+  text-align: center;
+}
+
+.price-sign {
+  font-size: 1.25rem;
+  margin-right: 2px;
+}
+
+.offer-price p {
+  font-weight: 400;
+  font-size: 0.9rem;
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+.offer-benefits {
+  list-style: none;
+  padding: 0 24px;
+  margin-bottom: 16px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+.offer-benefits li {
+  font-weight: 600;
+  font-size: 0.875rem;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+}
+
+.offer-benefits li:last-child {
+  border-bottom: none;
+}
+
+.checkmark {
+  color: var(--hover-color);
+  font-weight: 700;
+  margin-right: 10px;
+}
+
+.good-value .checkmark {
+  color: var(--hover-color);
+}
+
+.btn.buy-now {
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: white;
+  padding: 12px 24px;
+  margin-bottom: 1rem;
+  width: 90%;
+  transition: background-color 0.3s ease;
+  user-select: none;
+  text-align: center;
+}
+
+.try-one-btn,
+.most-popular-btn {
+  background-color: var(--primary-color);
+  box-shadow: 0 6px 0 var(--hover-color);
+}
+
+.try-one-btn:hover,
+.most-popular-btn:hover {
+  background-color: var(--hover-color);
+  box-shadow: 0 6px 0 var(--primary-color);
+}
+
+.good-value-btn {
+  background-color: var(--hover-color);
+  box-shadow: 0 6px 0 var(--primary-color);
+}
+
+.good-value-btn:hover {
+  background-color: var(--primary-color);
+  box-shadow: 0 6px 0 var(--hover-color);
+}
+
+.payment-logos img {
+  width: 140px;
+  margin: 0 auto;
+  display: block;
+}
+
+.total-price {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #000;
+  margin-top: 6px;
+  text-align: center;
+}
+
+.total-price del {
+  color: #555;
+  margin-right: 8px;
+}
+
+.total-price strong {
+  color: var(--hover-color);
+  font-weight: 900;
+}
+
+/* FAQ */
+.faq-section {
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+.faq-section h3 {
+  margin-bottom: 1.5rem;
+}
+
+.faq {
+  margin-bottom: 1rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.faq-wrapper {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.faq-wrapper h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.faq-item {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.faq-item:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.faq-question {
+  background: var(--primary-color);
+  color: white;
+  padding: 1rem;
+  width: 100%;
+  border: none;
+  text-align: left;
+  font-size: 1.1rem;
+  cursor: pointer;
+  outline: none;
+  transition: background 0.3s ease;
+}
+
+.faq-question:hover {
+  background: var(--hover-color);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  background-color: #eee;
+  padding: 0 1rem;
+  transition: max-height 0.5s ease, padding 0.3s ease;
+}
+
+.faq-item.active .faq-answer {
+  max-height: 300px;
+  padding: 1rem;
+}
+
+.faq-item.hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  transform: scale(1.01);
+}
+
+/* Footer */
+footer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  padding: var(--spacing);
+  gap: var(--spacing);
+  text-align: center;
+  font-size: 0.875rem;
+  color: #666;
+  border-top: 1px solid var(--hover-color);
+  background-color: var(--text-color);
+}
+
+.footer-disclaimer {
+  max-width: 850px;
+  margin: 0 auto;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-links a {
+  color: #666;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover,
+.footer-links a:focus {
+  text-decoration: none;
+  color: #000;
+  font-weight: 400;
+}
+
+footer p {
+  font-size: 0.75rem;
+}
+
+.scientific-references {
+  max-width: 1000px;
+  margin: 60px auto 40px;
+  padding: 0 16px;
+  text-align: center;
+  color: #000;
+}
+
+.scientific-references h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.scientific-references .logos img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 12px;
+}
+
+.scientific-references .disclaimer {
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 32px;
+  color: #222;
+}
+
+.scientific-references .references-list {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.scientific-references .column {
+  flex: 1 1 45%;
+  text-align: left;
+}
+
+.scientific-references .column p {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin-bottom: 12px;
+  color: #444;
+}
+
+.testimonials-section {
+  padding: 60px 0;
+}
+.section-title {
+  text-align: center;
+  font-size: 32px;
+  color: var(--primary-color); /* O tom da sua marca */
+  margin-bottom: 8px;
+}
+
+.section-subtitle {
+  text-align: center;
+  font-size: 18px;
+  color: var(--primary-color); /* O tom da sua marca */
+  font-weight: 400;
+  margin-bottom: 40px;
+}
+
+.reviews-origin-text {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+/* --- Estilos do Card de Depoimento --- */
+.review-card {
+  display: flex;
+  gap: 15px;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #e0e0e0; /* Linha sutil de separação */
+}
+
+.review-author-avatar svg {
+  margin-top: 4px;
+}
+
+.review-content {
+  width: 100%;
+}
+
+.review-author-name {
+  font-size: 14px;
+}
+
+.review-headline {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 8px 0;
+}
+
+.review-meta {
+  font-size: 13px;
+  color: #565959;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.verified-purchase {
+  color: #c45500; /* Cor de destaque para "Compra Verificada" */
+  font-weight: 700;
+}
+
+.review-images {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.review-images img {
+  width: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.review-text {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* --- Rodapé do Card --- */
+.review-footer {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.helpful-count {
+  font-size: 13px;
+  color: #565959;
+}
+
+.actions-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.helpful-btn {
+  background-color: #fff;
+  border: 1px solid #d5d9d9;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px 0 rgba(213, 217, 217, 0.5);
+  padding: 6px 15px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.helpful-btn:hover {
+  background-color: #f7fafa;
+}
+
+.divider {
+  color: #e0e0e0;
+}
+
+.action-link {
+  font-size: 13px;
+  color: #007185;
+  text-decoration: none;
+}
+
+.action-link:hover {
+  text-decoration: underline;
+  color: #c45500;
+}
+
+.report-link {
+  margin-left: auto; /* Empurra o "Report" para a direita */
+}
+
+/* --- Estilos da Seção de Referências --- */
+.references-section {
+  padding: 60px 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--primary-color); /* Um tom de roxo científico e sóbrio */
+  margin-bottom: 40px;
+}
+
+/* --- A Mágica das Duas Colunas --- */
+.references-list {
+  /* Isso instrui o navegador a dividir o conteúdo da lista em 2 colunas */
+  column-count: 2;
+  /* Espaço entre as colunas */
+  column-gap: 50px;
+
+  /* Remove o padding padrão da lista para alinhar com o container */
+  padding-left: 0;
+  /* Coloca os números da lista "dentro" do bloco de texto, melhorando o alinhamento */
+  list-style-position: inside;
+}
+
+.references-list li {
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: #454545;
+}
+
+/* A tag <em> já é itálica por padrão, mas podemos adicionar estilos se necessário */
+.references-list li em {
+  color: #555;
+}
+.quiz-container {
+  max-width: 800px;
+  background: var(--gradient-color);
+  color: #fff;
+  padding: 40px;
+  border-radius: 24px;
+  margin-bottom: 4rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+.next-btn-step {
+  background-color: var(--hover-color);
+  text-align: center;
+  color: #fff;
+  font-weight: 500;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+/* --- Cabeçalho e Títulos --- */
+.quiz-header h1 {
+  color: var(--text-primary);
+  text-align: center;
+  font-size: 34px;
+  margin-bottom: 16px;
+}
+
+.quiz-header p {
+  color: var(--text-secondary);
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto 30px;
+  line-height: 1.6;
+}
+
+.quiz-step h2 {
+  color: var(--text-primary);
+  text-align: center;
+  font-size: 24px;
+  font-weight: 500;
+  margin: auto;
+  margin-bottom: 30px;
+  max-width: 500px;
+}
+
+/* --- Lógica de Visibilidade dos Passos --- */
+.quiz-step {
+  display: none;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.quiz-step.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Estilos dos Inputs --- */
+.options-group,
+.checkbox-group {
+  display: grid;
+  gap: 15px;
+}
+
+.options-group {
+  grid-template-columns: 1fr;
+}
+.checkbox-group {
+  grid-template-columns: 1fr 1fr;
+}
+
+.options-group label,
+.checkbox-group label {
+  display: block;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  padding: 15px 20px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.options-group label:hover,
+.checkbox-group label:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--text-primary);
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  display: none; /* Escondemos o input padrão */
+}
+
+/* Estilo para quando a opção é selecionada */
+input[type="radio"]:checked + span,
+input[type="checkbox"]:checked + span {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+input[type="radio"]:checked ~ span,
+input[type="checkbox"]:checked ~ span {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+.options-group label.selected {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--text-primary);
+}
+
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-group label span::before {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--border-color);
+  background: transparent;
+  border-radius: 4px;
+  margin-right: 15px;
+  transition: all 0.2s;
+}
+
+.checkbox-group input[type="checkbox"]:checked + span::before {
+  background-color: var(--green-cta);
+  border-color: var(--green-cta);
+  content: "✔";
+  color: var(--text-primary);
+  text-align: center;
+  line-height: 18px;
+  font-size: 14px;
+}
+
+/* Inputs de Texto e Range */
+.input-group {
+  max-width: 300px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+}
+
+#current_weight_input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid var(--border-color);
+  color: var(--text-primary);
+  border-radius: 12px;
+  padding: 15px;
+  font-size: 18px;
+  text-align: center;
+}
+.input-label {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-secondary);
+}
+/* --- Tela de Carregamento e Resultados --- */
+.loading-content p {
+  max-width: 450px;
+  margin: auto;
+}
+
+.loading-content,
+.results-content {
+  text-align: center;
+}
+.loading-content .highlight {
+  color: #82fdd2;
+}
+.progress-bar-container {
+  width: 100%;
+  height: 20px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  margin: 30px 0;
+}
+.progress-bar-fill {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #36a468, #82fdd2);
+  border-radius: 10px;
+  transition: width 0.5s ease-out;
+}
+.loading-status {
+  color: var(--text-secondary);
+}
+
+.results-content {
+  display: flex;
+  gap: 30px;
+  text-align: left;
+}
+.results-text {
+  flex: 1;
+}
+.results-image {
+  flex: 1;
+}
+.results-image img {
+  border-radius: 12px;
+  height: 100%;
+  object-fit: cover;
+}
+.cta-button {
+  background-color: #ffde59;
+  color: #333;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 20px;
+  width: 100%;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: all 0.2s;
+}
+.cta-button:hover {
+  transform: scale(1.03);
+  box-shadow: 0 5px 15px rgba(255, 222, 89, 0.3);
+}
+
+/* Conteúdo Final Escondido */
+.visibilidade {
+  display: none;
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .cta-button {
+    transition: none;
+  }
+}
+
+/* --- Responsividade --- */
+@media (max-width: 600px) {
+  .quiz-container {
+    padding: 2rem;
+    margin: 1rem;
+  }
+  .quiz-header h1 {
+    font-size: 28px;
+  }
+  .quiz-header p {
+    padding: 0 1rem;
+  }
+  .checkbox-group {
+    grid-template-columns: 1fr;
+  }
+  .results-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  .results-image {
+    order: -1;
+    max-width: 250px;
+    margin: 0 auto 20px;
+  }
+  .header h2 {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    padding: 1rem;
+    font-size: 2rem;
+  }
+
+  .container {
+    padding-top: 1rem;
+    margin-top: 0;
+    border-radius: 0;
+  }
+
+  .grid {
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+  }
+
+  .content {
+    width: 100%;
+    text-align: center;
+    padding: 1rem 1rem;
+  }
+
+  .content h1 {
+    font-size: 2rem;
+  }
+
+  .header h2 {
+    font-size: 1.5rem;
+  }
+
+  .divisor h2 {
+    max-width: 250px;
+  }
+
+  .separador {
+    width: 30%;
+    height: 2px;
+    background-color: var(--hover-color);
+    margin: 0 auto;
+  }
+
+  .offer {
+    margin: 0 auto;
+    max-width: 100%;
+  }
+
+  .offer-section {
+    flex-direction: column;
+    align-items: center;
+  }
+  .offer-image {
+    width: 260px;
+    height: auto;
+  }
+  .payment-logos img {
+    width: 160px;
+  }
+
+  .quality-assurance-section h2 {
+    font-size: 1.8rem;
+  }
+
+  .quality-assurance-section p {
+    font-size: 1rem;
+    padding: 0 10px;
+  }
+
+  .quality-assurance-section .second-row {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .quality-assurance-section .seal-container img {
+    max-height: 50px;
+  }
+
+  .testimonial-container {
+    flex-direction: column;
+    align-items: start;
+    margin: 1rem;
+  }
+
+  .faq-wrapper {
+    padding: 0 1rem;
+  }
+
+  .faq-question {
+    font-size: 1rem;
+  }
+
+  .scientific-references .references-list {
+    flex-direction: column;
+    gap: 0;
+  }
+  .scientific-references .column {
+    flex: 1 1 100%;
+  }
+  .main-headline {
+    font-size: 23px; /* Diminui a fonte em telas menores para não quebrar tanto */
+  }
+
+  .pre-headline {
+    font-size: 16px;
+    margin-bottom: 0;
+  }
+  .logo {
+    font-size: 1.5rem;
+  }
+
+  .menu-toggle {
+    right: 15px;
+  }
+
+  .hamburger-line {
+    width: 25px;
+  }
+
+  .ticker-content {
+    /* Aumenta a velocidade em telas menores, pois há menos a ser lido */
+    animation-duration: 30s;
+  }
+
+  /* --- Container do Artigo --- */
+  .article-container {
+    padding: 0 10px;
+  }
+  .section-title {
+    font-size: 26px;
+  }
+  .review-images {
+    gap: 8px;
+  }
+  .review-images img {
+    width: 250px;
+  }
+  .review-footer {
+    flex-wrap: wrap; /* Permite que os itens quebrem a linha */
+    gap: 10px;
+  }
+  .actions-group {
+    order: 1; /* Muda a ordem para os botões irem primeiro */
+  }
+  .helpful-count {
+    order: 2;
+    width: 100%; /* Ocupa a linha toda */
+  }
+  .report-link {
+    display: none; /* Esconde o report em telas muito pequenas para limpar a UI */
+  }
+  .references-list {
+    /* Em telas menores, voltamos para uma única coluna para não espremer o texto */
+    column-count: 1;
+  }
+  .section-title {
+    font-size: 28px;
+  }
+}
