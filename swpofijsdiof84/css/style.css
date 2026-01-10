@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Open Sans", sans-serif;
+}
+
+a,
+a:hover,
+a:active,
+a:visited,
+a:focus {
+  text-decoration: none;
+}
+
+.link {
+  cursor: pointer;
+}
+
+.esconder {
+  display: none;
+}
+
+.top {
+  background-color: #C4170C;
+}
+
+.top h2 {
+  color: #FFFFFF;
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+.top p {
+  color: #FFFFFF;
+  font-family: "Arial", Sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.top svg {
+  fill: #FFFFFF;
+  height: 23px;
+}
+
+.content h2 {
+  color: #252525;
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.content h2 span {
+  color: #C4170C;
+}
+
+.content h3 {
+  color: #C4170C;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.3em;
+  letter-spacing: -2.3px;
+  text-align: center;
+}
+
+.content p {
+  color: #000000;
+  font-size: 19px;
+  font-weight: 400;
+}
+
+.btn-content {
+  background-color: #C4170C;
+  font-size: 27px;
+  font-weight: 700;
+  border-style: solid;
+  border-width: 0px 0px 2px 0px;
+  border-color: #C4170C;
+  padding: 10px 20px 10px 20px;
+  animation: pulse 2s infinite;
+  text-align: center;
+  color: #FFFFFF;
+  width: 95%;
+  margin: 0 auto;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+
+  50% {
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+}
+
+.azul {
+  color: #C4170C;
+}
+
+.content h4 {
+  font-size: 28px;
+  font-weight: 400;
+  color: #7A7A7A;
+  font-style: italic;
+  text-align: center;
+}
+
+.number {
+  color: #686868;
+  font-family: "Montserrat", Sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.2em;
+}
+
+.name {
+  color: #365899;
+  font-family: "Montserrat", Sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.2em;
+}
+
+.comment-text {
+  color: #000000;
+  font-family: "Montserrat", Sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5em;
+}
+
+.answer {
+  border-left: 1px solid #e3e3e3;
+}
+
+.profile {
+  object-fit: cover;
+}
+
+.fb {
+  fill: #3A559F;
+  width: 20px;
+  height: 20px;
+}
+
+.reply {
+  font-family: "Montserrat", Sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.2em;
+  color: #686868;
+}
+
+@media(max-width:821px) {
+  .content h2 {
+    font-size: 26px;
+  }
+
+  .content p {
+    font-size: 17px;
+  }
+
+  .content h3 {
+    font-size: 34px;
+  }
+
+  .btn-content {
+    font-size: 19px;
+  }
+}
