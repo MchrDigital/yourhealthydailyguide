@@ -102,6 +102,21 @@ a{text-decoration-thickness:1px!important;text-underline-offset:.1em}:where(.wp-
 						background-image: none !important;
 					}
 				}
+				/* Reduzir tamanho das imagens na versão desktop */
+				@media screen and (min-width: 769px) {
+					.elementor-widget-image img.wp-image-13,
+					.elementor-widget-image img.wp-image-14,
+					.elementor-widget-image img.wp-image-15 {
+						max-width: 380px !important;
+						width: 100% !important;
+						height: auto !important;
+					}
+					.elementor-widget-image img.wp-image-145 {
+						max-width: 280px !important;
+						width: 100% !important;
+						height: auto !important;
+					}
+				}
 			</style>
 			<style class="wp-fonts-local">
 @font-face{font-family:Manrope;font-style:normal;font-weight:200 800;font-display:fallback;src:url('fonts/Manrope-VariableFont_wght.woff2') format('woff2');}
