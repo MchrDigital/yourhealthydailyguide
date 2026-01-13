@@ -149,11 +149,7 @@ var elementorAppProConfig = {"baseUrl":"https:\/\/fitlifeus.online\/wp-content\/
 				<div class="elementor-widget-container">
 					<!-- PIXEL AQUI -->				</div>
 				</div>
-					</div>
-				</div>
-		<div class="elementor-element elementor-element-4a19303 e-flex e-con-boxed e-con e-parent e-lazyloaded" data-id="4a19303" data-element_type="container">
-					<div class="e-con-inner">
-				<div class="elementor-element elementor-element-19d785b elementor-widget-mobile__width-inherit elementor-widget elementor-widget-html" data-id="19d785b" data-element_type="widget" data-widget_type="html.default">
+				<div class="elementor-element elementor-element-59245c7 elementor-widget elementor-widget-html" data-id="59245c7" data-element_type="widget" data-widget_type="html.default">
 				<div class="elementor-widget-container">
 					<div id="watching-banner" style="
   width:100%;
@@ -165,11 +161,10 @@ var elementorAppProConfig = {"baseUrl":"https:\/\/fitlifeus.online\/wp-content\/
   line-height:1.2;
   padding:10px 14px;
   box-sizing:border-box;
-  margin-bottom: 10px;
 ">
   <span id="watching-count">764</span>
   <span> Personen sehen sich diese Präsentation an. Aufgrund der hohen Nachfrage ist sie nur bis zum </span>
-  <span id="watching-date" style="color:#FFD400;">22/12/2025</span>
+  <span id="watching-date" style="color:#FFD400;">13/01/2026</span>
   <span> verfügbar</span>
 </div>
 
@@ -178,12 +173,8 @@ var elementorAppProConfig = {"baseUrl":"https:\/\/fitlifeus.online\/wp-content\/
   const countEl = document.getElementById("watching-count");
   const dateEl  = document.getElementById("watching-date");
 
-  // Data de hoje em amarelo (dd/mm/aaaa)
-  const now = new Date();
-  const dd = String(now.getDate()).padStart(2, "0");
-  const mm = String(now.getMonth() + 1).padStart(2, "0");
-  const yyyy = now.getFullYear();
-  dateEl.textContent = `${dd}/${mm}/${yyyy}`;
+  // Data fixa: 13/01/2026
+  dateEl.textContent = "13/01/2026";
 
   // Configs do "contador natural"
   let count = parseInt(countEl.textContent, 10) || 746;
@@ -221,8 +212,14 @@ var elementorAppProConfig = {"baseUrl":"https:\/\/fitlifeus.online\/wp-content\/
 
   scheduleNextTick();
 })();
-</script>
-
+</script>				</div>
+				</div>
+					</div>
+				</div>
+		<div class="elementor-element elementor-element-4a19303 e-flex e-con-boxed e-con e-parent e-lazyloaded" data-id="4a19303" data-element_type="container">
+					<div class="e-con-inner">
+				<div class="elementor-element elementor-element-19d785b elementor-widget-mobile__width-inherit elementor-widget elementor-widget-html" data-id="19d785b" data-element_type="widget" data-widget_type="html.default">
+				<div class="elementor-widget-container">
 					<vturb-smartplayer id="69659e93babb3c83681309ec" style="display: block; margin: 0 auto; width: 100%; max-width: 800px;"></vturb-smartplayer>
 					<script type="text/javascript">
 					var s=document.createElement("script");
