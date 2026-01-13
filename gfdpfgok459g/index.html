@@ -224,11 +224,27 @@ var elementorAppProConfig = {"baseUrl":"https:\/\/fitlifeus.online\/wp-content\/
 					<div class="e-con-inner">
 				<div class="elementor-element elementor-element-19d785b elementor-widget-mobile__width-inherit elementor-widget elementor-widget-html" data-id="19d785b" data-element_type="widget" data-widget_type="html.default">
 				<div class="elementor-widget-container">
-					<vturb-smartplayer id="69659e93babb3c83681309ec" style="display: block; margin: 0 auto; width: 100%; "></vturb-smartplayer>
+					<vturb-smartplayer id="69659e93babb3c83681309ec" style="display: block; margin: 0 auto; max-width: 1200px; width: 100%; "></vturb-smartplayer>
 					<script type="text/javascript">
 					var s=document.createElement("script");
 					s.src="https://scripts.converteai.net/017c6ea3-2469-4d2f-8bf9-d9fceddc79ce/players/69659e93babb3c83681309ec/v4/player.js";
 					s.async=!0,document.head.appendChild(s);
+					</script>
+
+					<style>
+					.esconder {
+					  display: none;
+					}
+					</style>
+
+					<script>
+					var delaySeconds = 3285;
+					var player = document.querySelector("vturb-smartplayer");
+					player.addEventListener("player:ready", function() {
+					  player.displayHiddenElements(delaySeconds, [".esconder"], {
+					    persist: true
+					  });
+					});
 					</script>
 				</div>
 				</div>
@@ -236,11 +252,11 @@ var elementorAppProConfig = {"baseUrl":"https:\/\/fitlifeus.online\/wp-content\/
 				<div class="elementor-widget-container">
 									<p><span class="destaque">WICHTIG:</span>&nbsp;Stellen Sie sicher, dass Ihr Ton eingeschaltet ist 🔊</p>								</div>
 				</div>
-				<div class="elementor-element elementor-element-7c17f4c elementor-widget__width-initial elementor-widget elementor-widget-image" data-id="7c17f4c" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-element elementor-element-7c17f4c esconder elementor-widget__width-initial elementor-widget elementor-widget-image" data-id="7c17f4c" data-element_type="widget" data-widget_type="image.default">
 				<div class="elementor-widget-container">
 															<img fetchpriority="high" decoding="async" width="750" height="123" src="./index_files/tvs.webp" class="attachment-large size-large wp-image-14112" alt="" srcset="https://fitlifeus.online/wp-content/uploads/2025/12/tvs.webp 750w, https://fitlifeus.online/wp-content/uploads/2025/12/tvs-300x49.webp 300w" sizes="(max-width: 750px) 100vw, 750px">															</div>
 				</div>
-				<div class="elementor-element elementor-element-flaschen-banner elementor-widget elementor-widget-html" data-id="flaschen-banner" data-element_type="widget" data-widget_type="html.default">
+				<div class="elementor-element elementor-element-flaschen-banner esconder elementor-widget elementor-widget-html" data-id="flaschen-banner" data-element_type="widget" data-widget_type="html.default">
 				<div class="elementor-widget-container">
 					<div id="flaschen-banner" style="
   width:100%;
@@ -716,24 +732,6 @@ var elementorAppProConfig = {"baseUrl":"https:\/\/fitlifeus.online\/wp-content\/
 				<div class="elementor-element elementor-element-4dcc441 elementor-widget elementor-widget-text-editor" data-id="4dcc441" data-element_type="widget" data-widget_type="text-editor.default">
 				<div class="elementor-widget-container">
 									<p class="p1"><b>© SlimJara 2025. Alle Rechte vorbehalten.</b></p>								</div>
-				</div>
-				<div class="elementor-element elementor-element-a2cc7d9 elementor-widget elementor-widget-html" data-id="a2cc7d9" data-element_type="widget" data-widget_type="html.default">
-				<div class="elementor-widget-container">
-					<style>
-  .esconde {
-    display: none;
-  }
-</style>
-
-<script>
-  var delaySeconds = 3285;
-  var player = document.querySelector("vturb-smartplayer");
-  player.addEventListener("player:ready", function() {
-    player.displayHiddenElements(delaySeconds, [".esconder"], {
-      persist: true
-    });
-  });
-</script>				</div>
 				</div>
 					</div>
 				</div>
