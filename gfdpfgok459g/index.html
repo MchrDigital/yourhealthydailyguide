@@ -224,9 +224,7 @@ var elementorAppProConfig = {"baseUrl":"https:\/\/fitlifeus.online\/wp-content\/
 					<div class="e-con-inner">
 				<div class="elementor-element elementor-element-19d785b elementor-widget-mobile__width-inherit elementor-widget elementor-widget-html" data-id="19d785b" data-element_type="widget" data-widget_type="html.default">
 				<div class="elementor-widget-container">
-					<div style="max-width: 720px; margin: 0 auto; width: 100%; padding: 0 16px;">
-						<vturb-smartplayer id="69659e93babb3c83681309ec" style="display: block; width: 100%; max-width: 100%;"></vturb-smartplayer>
-					</div>
+					<vturb-smartplayer id="69659e93babb3c83681309ec" style="display: block; margin: 0 auto; width: 100%; max-width: 800px;"></vturb-smartplayer>
 					<script type="text/javascript">
 					var s=document.createElement("script");
 					s.src="https://scripts.converteai.net/017c6ea3-2469-4d2f-8bf9-d9fceddc79ce/players/69659e93babb3c83681309ec/v4/player.js";
@@ -238,8 +236,15 @@ var elementorAppProConfig = {"baseUrl":"https:\/\/fitlifeus.online\/wp-content\/
 					  display: none;
 					}
 					vturb-smartplayer {
-					  max-width: 100% !important;
+					  max-width: 800px !important;
 					  width: 100% !important;
+					  margin: 0 auto !important;
+					}
+					@media (max-width: 768px) {
+					  vturb-smartplayer {
+					    max-width: 100% !important;
+					    padding: 0 10px;
+					  }
 					}
 					</style>
 
