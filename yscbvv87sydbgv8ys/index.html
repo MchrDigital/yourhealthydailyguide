@@ -531,48 +531,22 @@
 
 		updateCountdown();
 		setInterval(updateCountdown, 1000);
-		
-		// Script para mostrar elementos após 10 segundos de reprodução do vídeo
-		var delaySeconds = 10;
-		var elementsShown = false;
-		
-		// Função para mostrar os elementos
-		function showElements() {
-			if (!elementsShown) {
-				var elements = document.querySelectorAll(".esconder");
-				elements.forEach(function(el) {
-					el.classList.remove("esconder");
-				});
-				elementsShown = true;
-			}
-		}
-		
-		// Aguarda o player carregar
-		setTimeout(function() {
-			var player = document.querySelector("vturb-smartplayer");
-			if (player) {
-				// Tenta adicionar listener para quando o vídeo começar a tocar
-				try {
-					player.addEventListener("player:play", function() {
-						// Mostra elementos após X segundos do vídeo estar tocando
-						setTimeout(function() {
-							showElements();
-						}, delaySeconds * 1000);
-					}, { once: true }); // once: true garante que só execute uma vez
-				} catch(e) {
-					console.log("Erro ao adicionar evento:", e);
-					// Fallback: mostra após 10 segundos do carregamento da página
-					setTimeout(function() {
-						showElements();
-					}, delaySeconds * 1000);
-				}
-			} else {
-				// Se não encontrar o player, mostra após 10 segundos
-				setTimeout(function() {
-					showElements();
-				}, delaySeconds * 1000);
-			}
-		}, 2000);
 	</script>
+
+	<style>
+  .esconder {
+    display: none;
+  }
+</style>
+
+<script>
+  var delaySeconds = 5;
+  var player = document.querySelector("vturb-smartplayer");
+  player.addEventListener("player:ready", function() {
+    player.displayHiddenElements(delaySeconds, [".esconder"], {
+      persist: true
+    });
+  });
+</script>
 </body>
 </html>
