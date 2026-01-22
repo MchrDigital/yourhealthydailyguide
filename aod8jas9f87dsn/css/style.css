@@ -1,0 +1,363 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #ffffff;
+    color: #333;
+    line-height: 1.4;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.loader-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.loader {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #dc143c;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.powerball-logo {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.powerball-logo img {
+    max-width: 300px;
+    height: auto;
+}
+
+.logo-fallback {
+    font-size: 32px;
+    font-weight: bold;
+    color: #dc143c;
+    text-align: center;
+    padding: 20px;
+    border: 3px solid #dc143c;
+    border-radius: 10px;
+    background: #f8f8f8;
+    display: inline-block;
+}
+
+.next-drawing {
+    background: #f8f8f8;
+    padding: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.next-drawing h3 {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 10px;
+    font-weight: normal;
+}
+
+.draw-date {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.estimated-jackpot {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+}
+
+.jackpot-amount {
+    font-size: 28px;
+    font-weight: bold;
+    color: #dc143c;
+}
+
+.ai-status {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin: 40px 0 20px 0;
+}
+
+.instruction {
+    text-align: center;
+    font-size: 16px;
+    color: #666;
+    margin: 20px 0 30px 0;
+}
+
+.predict-button {
+    background: #dc143c;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    border-radius: 5px;
+    text-transform: uppercase;
+    transition: background 0.3s;
+}
+
+.predict-button:hover {
+    background: #b91c3c;
+}
+
+.predict-button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.loading-section {
+    display: none;
+    text-align: center;
+    margin: 40px 0;
+    position: relative;
+}
+
+.loading-text {
+    font-size: 18px;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 20px;
+    min-height: 50px;
+}
+
+.progress-container {
+    background: #e9ecef;
+    border-radius: 15px;
+    height: 20px;
+    margin: 0 auto;
+    max-width: 400px;
+    overflow: hidden;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #dc143c, #ff4444);
+    transition: width 0.1s ease;
+    border-radius: 15px;
+    width: 0%;
+}
+
+.balls-container {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin: 40px 0;
+    flex-wrap: nowrap;
+}
+
+.ball {
+    display: flex;
+    flex: 1 0 3rem;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    max-width: 3rem;
+    height: 3rem;
+    aspect-ratio: 1;
+    border-radius: 100%;
+    border: solid 1px #666;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    text-align: center;
+    color: #101820;
+    font-size: 1.25rem;
+    transition: all 0.5s ease;
+}
+
+.ball.hidden {
+    background: #333;
+    color: #999;
+    border-color: #555;
+}
+
+.ball.revealed {
+    background: radial-gradient(circle at 50% 25%, #fff, #bbb);
+    border: solid 1px #d2d2d2;
+    perspective: 600px;
+    perspective-origin: 50% 50%;
+    color: #101820;
+    animation: ballReveal 0.6s ease-out;
+}
+
+.ball.powerball {
+    background: #dc143c;
+    color: white;
+    border-color: #dc143c;
+}
+
+.ball.powerball.hidden {
+    background: #dc143c;
+    color: white;
+    border-color: #dc143c;
+}
+
+@keyframes ballReveal {
+    0% { 
+        transform: scale(0); 
+        opacity: 0; 
+    }
+    50% { 
+        transform: scale(1.2); 
+        opacity: 0.8; 
+    }
+    100% { 
+        transform: scale(1); 
+        opacity: 1; 
+    }
+}
+
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup {
+    background: white;
+    padding: 40px;
+    max-width: 500px;
+    margin: 20px;
+    text-align: center;
+    border-radius: 8px;
+    overflow: scroll;
+    max-height: 90vh;
+}
+
+.popup h2 {
+    color: #333;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.popup p {
+    font-size: 16px;
+    color: #666;
+    margin: 15px 0;
+    line-height: 1.5;
+}
+
+.popup .cta-button {
+    background: #dc143c;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 25px 0;
+    border-radius: 5px;
+    text-transform: uppercase;
+    transition: background 0.3s;
+}
+
+.popup .cta-button:hover {
+    background: #b91c3c;
+}
+
+.popup .warning {
+    color: black;
+    font-weight: bold;
+    font-size: 14px;
+    margin: 20px 0;
+}
+
+.warning b {
+    color: #dc143c;
+}
+
+.popup .timer-section {
+    margin: 20px 0;
+}
+
+.popup .timer {
+    font-size: 24px;
+    font-weight: bold;
+    color: #dc143c;
+    margin: 10px 0;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 15px;
+    }
+
+    .logo-fallback {
+        font-size: 24px;
+        padding: 15px;
+    }
+
+    .ball {
+        flex: 1 0 2.5rem;
+        max-width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1rem;
+    }
+
+    .popup {
+        padding: 25px;
+        margin: 15px;
+    }
+
+    .jackpot-amount {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .ball {
+        flex: 1 0 2rem;
+        max-width: 2rem;
+        height: 2rem;
+        font-size: 0.9rem;
+    }
+
+    .logo-fallback {
+        font-size: 20px;
+    }
+}
