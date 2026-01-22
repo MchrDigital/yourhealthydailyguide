@@ -517,7 +517,7 @@
 		setInterval(updateCountdown, 1000);
 		
 		// Script para mostrar elementos com delay após o vídeo carregar
-		var delaySeconds = 10;
+		var delaySeconds = 5;
 		
 		setTimeout(function() {
 			var player = document.querySelector("vturb-smartplayer");
@@ -549,19 +549,5 @@
 			}
 		}, 2000);
 	</script>
-
-	DELAY HTML 
-
-<script>
-  var delaySeconds = 5;
-  var player = document.querySelector("vturb-smartplayer");
-  if (player) {
-    player.addEventListener("player:ready", function() {
-      player.displayHiddenElements(delaySeconds, [".atomicat-delay"], {
-        persist: true
-      });
-    });
-  }
-</script>
 </body>
 </html>
