@@ -5,6 +5,14 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>ERECTUS X AFILIADOS</title>
 	
+	<script
+		src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+		data-utmify-prevent-xcod-sck
+		data-utmify-prevent-subids
+		async
+		defer
+	></script>
+	
 	<style>
 		* {
 			margin: 0;
@@ -534,14 +542,41 @@
 	</script>
 
 	<script>
-  var delaySeconds = 1;
-  var player = document.querySelector("vturb-smartplayer");
-  if (player) {
-    player.addEventListener("player:ready", function() {
-      player.displayHiddenElements(delaySeconds, [".atomicat-delay"], {
-        persist: true
-      });
-    });
-  }
-</script>
-</body></html>
+		var delaySeconds = 1;
+		
+		// Função para mostrar os elementos
+		function showElements() {
+			var elements = document.querySelectorAll(".esconder");
+			elements.forEach(function(el) {
+				el.classList.remove("esconder");
+			});
+			console.log("Elementos mostrados!");
+		}
+		
+		// Aguarda um pouco para garantir que o player foi carregado
+		setTimeout(function() {
+			var player = document.querySelector("vturb-smartplayer");
+			
+			if (player && player.displayHiddenElements) {
+				console.log("Player encontrado - usando displayHiddenElements");
+				try {
+					player.addEventListener("player:ready", function() {
+						console.log("Player ready - iniciando delay de " + delaySeconds + " segundos");
+						player.displayHiddenElements(delaySeconds, [".esconder"], {
+							persist: true
+						});
+					});
+				} catch(e) {
+					console.log("Erro ao usar displayHiddenElements:", e);
+					// Fallback
+					setTimeout(showElements, delaySeconds * 1000);
+				}
+			} else {
+				console.log("Player não encontrado ou método não disponível - usando fallback");
+				// Fallback: mostra após X segundos
+				setTimeout(showElements, delaySeconds * 1000);
+			}
+		}, 3000);
+	</script>
+</body>
+</html>
