@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+  =====================================================================
+  MIND PURE — WHITE PAGE NUTRA (compliance)
+  Adaptada da white /perfectmemory (guia digital) para produto físico.
+  - Sem promessa de resultado; FDA disclaimer de suplemento; 18+.
+  - ATOMICAT: o script da Digistore abaixo vai em Configurações da página >
+    Header Scripts. Se colar a página inteira, remova daqui.
+  - PREENCHER antes de publicar (busque por "{{"):
+      {{DS24_PRODUCT_ID}}  -> ID do produto principal na Digistore
+      {{CHECKOUT_2}} {{CHECKOUT_3}} {{CHECKOUT_6}} -> links de checkout
+      {{PRICE_2}} {{PRICE_3}} {{PRICE_6}} -> preço por pote (ex: 69)
+      {{TOTAL_2}} {{TOTAL_3}} {{TOTAL_6}} -> total do pacote
+  - CONFIRMAR: prazo de garantia (60 dias, herdado da white original),
+    frete e "GMP-certified facility".
+  =====================================================================
+-->
+<script src="https://www.digistore24-scripts.com/service/digistore.js"></script>
+<script type="text/javascript">
+digistorePromocode( { "product_id": "{{DS24_PRODUCT_ID}}", "adjust_all_urls": true, "adjust_domain": true } );
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="googlebot" content="noindex, nofollow">
+<title>Mind Pure: Daily Liquid Drops</title>
+<style>
+  :root{
+    --bg:#F5F4EF; --card:#FFFFFF; --ink:#1F2E3A; --body:#56606A;
+    --gold:#B8862B; --gold-dark:#946A1C; --leaf:#3E7C4F;
+    --muted:#8A939B; --line:#E1E1D8; --soft:#F1EEE3;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);font-family:'Trebuchet MS',Verdana,Arial,sans-serif;color:var(--body);line-height:1.7;-webkit-font-smoothing:antialiased;}
+  .topbar{background:var(--ink);color:#E9EEF2;text-align:center;font-size:13px;letter-spacing:1px;padding:9px 16px;}
+  .agebar{background:var(--soft);color:var(--ink);text-align:center;font-size:12px;padding:7px 16px;border-bottom:1px solid var(--line);}
+  .wrap{max-width:1000px;margin:0 auto;padding:36px 24px 40px;}
+  .brand{display:flex;align-items:center;gap:10px;margin-bottom:34px;}
+  .brand-name{font-size:21px;color:var(--ink);font-weight:bold;letter-spacing:0.5px;}
+  .brand-name em{color:var(--gold);font-style:normal;}
+  .brand-tag{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-left:auto;}
+
+  .hero{display:grid;grid-template-columns:1.1fr 0.9fr;gap:44px;align-items:center;margin-bottom:26px;}
+  .eyebrow{display:inline-block;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--leaf);background:#E4EEE2;padding:6px 14px;border-radius:20px;margin-bottom:18px;}
+  h1{font-size:40px;color:var(--ink);line-height:1.15;margin-bottom:18px;font-weight:800;}
+  h1 .hl{color:var(--gold);}
+  .sub{font-size:17px;margin-bottom:26px;}
+  .btn{display:inline-block;background:var(--gold);color:#FFFFFF;font-weight:bold;font-size:18px;text-decoration:none;padding:18px 46px;border-radius:50px;box-shadow:0 8px 20px rgba(184,134,43,0.28);text-align:center;}
+  .btn:hover{background:var(--gold-dark);}
+  .trust{font-size:13px;color:var(--muted);margin-top:14px;}
+  .hero-media img{width:100%;max-width:440px;height:auto;display:block;margin:0 auto;}
+  .img-note{font-size:12px;color:var(--muted);text-align:center;max-width:430px;margin:10px auto 0;}
+
+  .strip{display:flex;justify-content:center;gap:34px;flex-wrap:wrap;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 24px;margin:10px 0 46px;font-size:14px;color:var(--ink);}
+  .strip span:before{content:"\2713  ";color:var(--leaf);font-weight:bold;}
+
+  .section-title{text-align:center;font-size:28px;color:var(--ink);font-weight:800;margin-bottom:8px;}
+  .section-sub{text-align:center;font-size:15px;max-width:600px;margin:0 auto 30px;}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:48px;}
+  .tile{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px 22px;}
+  .tile .num{width:34px;height:34px;border-radius:50%;background:var(--soft);color:var(--gold-dark);font-weight:bold;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+  .tile h3{font-size:17px;color:var(--ink);margin-bottom:8px;}
+  .tile p{font-size:14px;}
+
+  .about{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:46px;}
+  .about .box{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px 24px;}
+  .about h3{font-size:18px;color:var(--ink);margin-bottom:12px;}
+  .about ul{list-style:none;}
+  .about li{padding-left:26px;position:relative;margin-bottom:8px;font-size:14px;}
+  .about .is li:before{content:"\2713";position:absolute;left:0;color:var(--leaf);font-weight:bold;}
+  .about .isnt li:before{content:"\2715";position:absolute;left:0;color:#B0503A;font-weight:bold;}
+
+  .safety{background:#FFF9EC;border:1px solid #EAD9AE;border-radius:14px;padding:24px 26px;margin-bottom:46px;}
+  .safety h3{font-size:18px;color:var(--ink);margin-bottom:10px;}
+  .safety ul{padding-left:20px;font-size:14px;}
+  .safety li{margin-bottom:6px;}
+
+  .offers{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch;margin-bottom:14px;}
+  .offer{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px 20px 24px;text-align:center;display:flex;flex-direction:column;position:relative;}
+  .offer.best{border:2px solid var(--gold);box-shadow:0 14px 34px rgba(31,46,58,0.12);}
+  .offer .tag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--gold);color:#fff;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;padding:4px 14px;border-radius:20px;white-space:nowrap;}
+  .offer h3{font-size:20px;color:var(--ink);margin-bottom:2px;}
+  .offer .supply{font-size:13px;color:var(--muted);margin-bottom:12px;}
+  .offer img{width:100%;max-width:230px;height:auto;margin:0 auto 14px;display:block;}
+  .offer .per{font-size:15px;color:var(--ink);}
+  .offer .per strong{font-size:30px;}
+  .offer .total{font-size:13px;color:var(--muted);margin:4px 0 16px;}
+  .offer .btn{font-size:16px;padding:15px 18px;margin-top:auto;width:100%;}
+  .offer-note{font-size:12px;color:var(--muted);text-align:center;margin-bottom:46px;}
+
+  .guarantee{display:flex;gap:30px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:32px 36px;margin-bottom:46px;}
+  .guarantee .badge{width:150px;height:150px;flex-shrink:0;}
+  .guarantee h3{font-size:21px;color:var(--ink);margin-bottom:8px;}
+  .guarantee p{font-size:15px;}
+
+  .faq{max-width:760px;margin:0 auto 46px;}
+  .faq details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin-bottom:10px;}
+  .faq summary{cursor:pointer;color:var(--ink);font-weight:bold;font-size:15px;}
+  .faq p{font-size:14px;margin-top:10px;}
+
+  .final{background:var(--ink);border-radius:18px;text-align:center;padding:48px 30px;margin-bottom:10px;}
+  .final h2{color:#FFFFFF;font-size:28px;margin-bottom:10px;}
+  .final p{color:#C9D3DA;font-size:15px;max-width:540px;margin:0 auto 24px;}
+
+  .refund-note{font-size:13px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 20px;max-width:660px;margin:34px auto 0;text-align:center;line-height:1.8;}
+  .refund-note a{color:var(--gold-dark);}
+
+  .footer{margin-top:46px;padding-top:28px;border-top:1px solid var(--line);text-align:center;}
+  .disclaimer{font-size:12px;color:var(--muted);line-height:1.8;max-width:700px;margin:0 auto 14px;}
+  .fda{border:1px solid var(--line);border-radius:10px;padding:12px 16px;background:var(--card);color:var(--ink);}
+  .footlinks{font-size:13px;margin:8px 0 14px;}
+  .footlinks a{color:var(--body);text-decoration:underline;margin:0 12px;}
+  .copyright{font-size:12px;color:var(--muted);}
+
+  @media(max-width:820px){
+    .hero{grid-template-columns:1fr;gap:28px;}
+    .hero-media{order:-1;}
+    h1{font-size:30px;}
+    .grid,.about,.offers{grid-template-columns:1fr;}
+    .offers{gap:28px;}
+    .offer.best{order:-1;}
+    .guarantee{flex-direction:column;text-align:center;}
+    .btn{width:100%;padding:18px 12px;}
+  }
+</style>
+</head>
+<body>
+<div class="topbar" id="topbar">DAILY LIQUID DROPS &middot; SHIPS TO YOUR DOOR &middot; 60-DAY MONEY-BACK GUARANTEE</div>
+<div class="agebar" id="agebar">For adults 18+ only. Read the safety information below before use.</div>
+
+<div class="wrap">
+
+  <div class="brand" id="brand"><svg width="30" height="30" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M16 3C16 3 6 15 6 21a10 10 0 0 0 20 0C26 15 16 3 16 3z" fill="#B8862B"/><ellipse cx="12.5" cy="19" rx="2.4" ry="3.6" fill="#FFFFFF" opacity="0.3"/></svg><span class="brand-name">Mind <em>Pure</em></span><span class="brand-tag">Daily Wellness Drops</span></div>
+
+  <section class="hero" id="hero">
+    <div class="hero-copy">
+      <span class="eyebrow">Dietary Supplement &middot; Liquid Drops</span>
+      <h1 id="hero-title">A Simple <span class="hl">Daily Drops Ritual</span> for Adults Who Care About Their Well-Being</h1>
+      <p class="sub" id="hero-sub">Mind Pure is a dietary supplement in liquid drop form, designed to be an easy part of your morning routine. It is meant to complement, not replace, a balanced diet, good sleep, and an active lifestyle.</p>
+      <a class="btn" id="hero-btn" href="#offers">See Package Options</a>
+      <div class="trust">Physical product shipped to your address &middot; Secure checkout by Digistore24</div>
+    </div>
+    <div class="hero-media">
+      <img id="hero-img" src="https://i.ibb.co/CNFthP4/6-Mind-Pure.png" alt="Mind Pure liquid drops bottles">
+      <div class="img-note">Image for illustration purposes. Product packaging may vary.</div>
+    </div>
+  </section>
+
+  <div class="strip" id="strip">
+    <span>Easy-to-use liquid drops</span>
+    <span>Shipped to your door</span>
+    <span>60-day money-back guarantee</span>
+  </div>
+
+  <section id="how">
+    <h2 class="section-title">How Mind Pure Fits Into Your Day</h2>
+    <p class="section-sub">No complicated routine. Just a small daily habit, taken as directed on the label.</p>
+    <div class="grid">
+      <div class="tile">
+        <div class="num">1</div>
+        <h3>Take It as Directed</h3>
+        <p>Use the dropper to take the serving shown on the label, directly or mixed into water, once a day.</p>
+      </div>
+      <div class="tile">
+        <div class="num">2</div>
+        <h3>Pair It With Healthy Habits</h3>
+        <p>Supplements work best alongside the basics: balanced meals, regular sleep, hydration, movement, and staying mentally active.</p>
+      </div>
+      <div class="tile">
+        <div class="num">3</div>
+        <h3>Stay Consistent</h3>
+        <p>Like any daily habit, consistency matters. That is why the larger packages give you a longer supply at a lower price per bottle.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="box is">
+      <h3>What Mind Pure is</h3>
+      <ul>
+        <li>A dietary supplement in liquid drop form</li>
+        <li>For healthy adults aged 18 and over</li>
+        <li>Made to complement a balanced lifestyle</li>
+        <li>Produced in a GMP-certified facility</li><!-- CONFIRMAR com o fornecedor -->
+      </ul>
+    </div>
+    <div class="box isnt">
+      <h3>What Mind Pure is not</h3>
+      <ul>
+        <li>Not a medicine or a medical treatment</li>
+        <li>Not a substitute for advice from your doctor</li>
+        <li>Not intended to diagnose, treat, cure or prevent any disease</li>
+        <li>Not a promise of any specific result</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="safety" id="safety">
+    <h3>Important Safety Information</h3>
+    <ul>
+      <li>For adults 18 and over. Keep out of reach of children.</li>
+      <li>Do not use if you are pregnant or nursing.</li>
+      <li>Talk to your doctor before use if you take any medication (including blood thinners) or have a medical condition.</li>
+      <li>Read the full ingredient list on the label and do not use if you are allergic to any ingredient.</li>
+      <li>Do not exceed the recommended serving. Stop use and consult a doctor if you notice any adverse reaction.</li>
+    </ul>
+  </section>
+
+  <section id="offers">
+    <h2 class="section-title">Choose Your Package</h2>
+    <p class="section-sub">Each bottle is a 30-day supply when taken as directed. Larger packages lower the price per bottle.</p>
+    <div class="offers">
+      <div class="offer" id="offer-2">
+        <h3>2 Bottles</h3>
+        <div class="supply">60-day supply</div>
+        <img src="https://i.ibb.co/FkHyW9kW/2-Mind-Pure.png" alt="2 bottles of Mind Pure">
+        <div class="per"><strong>${{PRICE_2}}</strong> / bottle</div>
+        <div class="total">Total: ${{TOTAL_2}} + shipping</div>
+        <a class="btn" id="buy-2" href="{{CHECKOUT_2}}">Order 2 Bottles</a>
+      </div>
+      <div class="offer best" id="offer-6">
+        <span class="tag">Best Value</span>
+        <h3>6 Bottles</h3>
+        <div class="supply">180-day supply</div>
+        <img src="https://i.ibb.co/CNFthP4/6-Mind-Pure.png" alt="6 bottles of Mind Pure">
+        <div class="per"><strong>${{PRICE_6}}</strong> / bottle</div>
+        <div class="total">Total: ${{TOTAL_6}}</div>
+        <a class="btn" id="buy-6" href="{{CHECKOUT_6}}">Order 6 Bottles</a>
+      </div>
+      <div class="offer" id="offer-3">
+        <span class="tag">Most Popular</span>
+        <h3>3 Bottles</h3>
+        <div class="supply">90-day supply</div>
+        <img src="https://i.ibb.co/DHxqy4Bz/3-Mind-Pure.png" alt="3 bottles of Mind Pure">
+        <div class="per"><strong>${{PRICE_3}}</strong> / bottle</div>
+        <div class="total">Total: ${{TOTAL_3}}</div>
+        <a class="btn" id="buy-3" href="{{CHECKOUT_3}}">Order 3 Bottles</a>
+      </div>
+    </div>
+    <p class="offer-note">One-time payment. No subscription and no automatic rebilling. Shipping costs and delivery times are shown at checkout.</p>
+  </section>
+
+  <section class="guarantee" id="guarantee">
+    <svg class="badge" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="60-day money-back guarantee">
+      <circle cx="150" cy="150" r="140" fill="#3E7C4F"/>
+      <circle cx="150" cy="150" r="122" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-dasharray="7 9"/>
+      <path d="M150 34l7 14 15 2-11 11 3 15-14-7-14 7 3-15-11-11 15-2z" fill="#F2E7C9"/>
+      <text x="150" y="138" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="bold" fill="#FFFFFF">60-DAY</text>
+      <text x="150" y="172" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="bold" fill="#DCEADF" letter-spacing="2">MONEY-BACK</text>
+      <text x="150" y="204" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="bold" fill="#DCEADF" letter-spacing="2">GUARANTEE</text>
+      <path d="M104 232c14 12 78 12 92 0" stroke="#F2E7C9" stroke-width="4" fill="none" stroke-linecap="round"/>
+    </svg>
+    <div>
+      <h3>60-Day Money-Back Guarantee</h3>
+      <p>If you are not satisfied with Mind Pure for any reason, contact our support team within 60 days of purchase for a full refund of the product price, even if the bottles have been opened. Your order is processed by Digistore24, our authorized retailer, through a secure checkout.</p>
+    </div>
+  </section>
+
+  <section class="faq" id="faq">
+    <h2 class="section-title" style="margin-bottom:22px;">Frequently Asked Questions</h2>
+    <details><summary>What is Mind Pure?</summary><p>Mind Pure is a dietary supplement in liquid drop form, intended for healthy adults as part of a balanced daily routine.</p></details>
+    <details><summary>How do I take it?</summary><p>Follow the serving size and directions printed on the label. Do not exceed the recommended serving.</p></details>
+    <details><summary>Can I take it with medication?</summary><p>If you take any medication or have a medical condition, talk to your doctor before using Mind Pure or any other supplement.</p></details>
+    <details><summary>Is there a minimum age?</summary><p>Yes. Mind Pure is for adults 18 and over only. It is not intended for pregnant or nursing women.</p></details>
+    <details><summary>Will I be charged again?</summary><p>No. Every package is a one-time payment. There is no subscription or automatic rebilling.</p></details>
+    <details><summary>How does shipping work?</summary><p>Your order is shipped to the address you provide at checkout. Shipping costs and estimated delivery times are shown before you complete your order, and you will receive tracking information by email.</p></details>
+    <details><summary>Is it a medical product?</summary><p>No. Mind Pure is a dietary supplement. It is not intended to diagnose, treat, cure or prevent any disease, and it does not replace medical care.</p></details>
+  </section>
+
+  <section class="final" id="final">
+    <h2>Start Your Daily Mind Pure Ritual</h2>
+    <p>Choose the package that fits your routine. Every order is covered by our 60-day money-back guarantee.</p>
+    <a class="btn" id="final-btn" href="#offers">Choose My Package</a>
+  </section>
+
+  <div class="refund-note" id="refund"><strong>Refund Policy:</strong> you can request a full refund of the product price within 60 days of purchase. Email <a href="mailto:support@dailyhealthmanual.com">support@dailyhealthmanual.com</a> or contact Digistore24 customer support with your order ID. Refunds are issued to your original payment method.</div>
+
+  <footer class="footer" id="footer">
+    <p class="disclaimer fda"><strong>*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.</strong></p>
+    <p class="disclaimer">The information on this website is for educational purposes only and is not medical advice. It does not replace consultation with a qualified healthcare professional. Individual results vary and no specific results are guaranteed.</p>
+    <p class="disclaimer"><strong>18+ only.</strong> Not for use by pregnant or nursing women. Consult your doctor before use if you take medication or have a medical condition. Keep out of reach of children.</p>
+    <p class="disclaimer">Digistore24 is the authorized retailer of the products offered on this website. Digistore24&reg; is a registered trademark of Digistore24 GmbH, Germany, used with permission.</p>
+    <div class="footlinks">
+      <a href="https://yourhealthydailyguide.com/terms-page/">Terms of Service</a>
+      <a href="https://yourhealthydailyguide.com/privacy/">Privacy Policy</a>
+      <a href="mailto:support@dailyhealthmanual.com">Contact</a>
+    </div>
+    <div class="copyright">&copy; 2026 Mind Pure &middot; yourhealthydailyguide.com. All rights reserved.</div>
+  </footer>
+
+</div>
+</body>
+</html>
